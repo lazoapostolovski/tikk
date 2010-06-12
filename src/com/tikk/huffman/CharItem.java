@@ -3,7 +3,7 @@ package com.tikk.huffman;
 /**
  * Lazo Apostolovski (lazo.apostolovski@gmail.com)
  */
-public class CharItem implements CharCode, CharWeight{
+public class CharItem {
   public static CharItem with(Character ch, Double weight){
     CharItem cw = new CharItem();
     cw.ch = ch;
