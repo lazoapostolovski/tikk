@@ -1,6 +1,7 @@
 package com.tikk.huffman;
 
 import com.tikk.com.tikk.common.CharFrequencyGenerator;
+import com.tikk.com.tikk.common.MessageCoder;
 import com.tikk.com.tikk.common.CharItem;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,16 +14,13 @@ import static org.junit.Assert.*;
  * Lazo Apostolovski (lazo.apostolovski@gmail.com)
  */
 public class Huffman {
-  private String codingMessage = "dnes e";
   private List<CharItem> chList;
-  private Map<Double, Character> chMap;
-  private CharCodeGenerator generator = new CharCodeGenerator();
-  private HuffmanMessageCoder coder = new HuffmanMessageCoder();
+  private HuffmanCharCodeGenerator generator = new HuffmanCharCodeGenerator();
+  private MessageCoder coder = new MessageCoder();
 
   @Before
   public void before(){
     chList = new CharFrequencyGenerator().generateList();
-    chMap = new HashMap<Double, Character>();
   }
 
   @Test
@@ -50,7 +48,7 @@ public class Huffman {
 
     assertEquals(message, deCoddedMessage);
 
-    System.out.println("Compresion: " + (coddedMessageBits / messageBits) * new Double(100));
+    System.out.println("Compression: " + (coddedMessageBits / messageBits) * new Double(100) + " %");
   }
 
   @Test

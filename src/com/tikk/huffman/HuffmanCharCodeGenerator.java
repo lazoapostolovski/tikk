@@ -1,13 +1,14 @@
 package com.tikk.huffman;
 
 import com.tikk.com.tikk.common.CharItem;
+import com.tikk.com.tikk.common.SortCharItemImpl;
 
 import java.util.*;
 
 /**
  * Lazo Apostolovski (lazo.apostolovski@gmail.com)
  */
-public class CharCodeGenerator {
+public class HuffmanCharCodeGenerator {
 
   public Map<Character, String> generate(List<CharItem> chars){
     List<CharItem> characters = generateList(chars);
@@ -50,15 +51,8 @@ public class CharCodeGenerator {
   }
 
   private void sortList(List<CharItem> list){
-    Collections.sort(list, new Comparator<CharItem>(){
-      public int compare(CharItem first, CharItem second) {
-        if(first.getWeight().equals(second.getWeight())){
-          return 0;
-        } else if(first.getWeight() > second.getWeight()){
-          return -1;
-        }
-        return 1;
-      }
-    });
+    list = SortCharItemImpl.sortList(list);
   }
+
+  
 }

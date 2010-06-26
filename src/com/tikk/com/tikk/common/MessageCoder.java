@@ -1,14 +1,12 @@
-package com.tikk.huffman;
+package com.tikk.com.tikk.common;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Lazo Apostolovski (lazo.apostolovski@gmail.com)
  */
-public class HuffmanMessageCoder {
+public class MessageCoder {
   public String codeMessage(Map<Character, String> codes, String message) {
     char[] messageChars = message.toCharArray();
 
