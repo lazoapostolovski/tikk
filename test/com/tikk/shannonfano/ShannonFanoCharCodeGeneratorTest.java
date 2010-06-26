@@ -1,13 +1,12 @@
 package com.tikk.shannonfano;
 
-import com.tikk.com.tikk.common.CharItem;
-import com.tikk.com.tikk.common.SortCharItemImpl;
+import com.tikk.common.CharItem;
+import com.tikk.common.SortCharItemImpl;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

@@ -1,18 +1,15 @@
 package com.tikk.shannonfano;
 
-import com.tikk.com.tikk.common.CharItem;
-import com.tikk.com.tikk.common.CoddingAlgorithm;
-import com.tikk.com.tikk.common.SortCharItemImpl;
+import com.tikk.common.CharItem;
+import com.tikk.common.CoddingAlgorithm;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Lazo Apostolovski (lazo.apostolovski@gmail.com)
  */
-public class ShannonFanoAlgorithm implements CoddingAlgorithm{
+public class ShannonFanoAlgorithm implements CoddingAlgorithm {
   
   public List<CharItem> generateCodes(List<CharItem> charFrequencies, double listPercents) {
     // kogato ostane samo edin element vo listata spri i vrni se nazad

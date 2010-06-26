@@ -1,4 +1,4 @@
-package com.tikk.com.tikk.common;
+package com.tikk.common;
 
 import java.util.HashMap;
 import java.util.List;

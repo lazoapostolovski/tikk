@@ -1,8 +1,8 @@
 package com.tikk.huffman;
 
-import com.tikk.com.tikk.common.CharItem;
-import com.tikk.com.tikk.common.CoddingAlgorithm;
-import com.tikk.com.tikk.common.SortCharItemImpl;
+import com.tikk.common.SortCharItemImpl;
+import com.tikk.common.CharItem;
+import com.tikk.common.CoddingAlgorithm;
 
 import java.util.*;
 

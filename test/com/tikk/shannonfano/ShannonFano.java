@@ -1,9 +1,9 @@
 package com.tikk.shannonfano;
 
-import com.tikk.com.tikk.common.CodeMapper;
-import com.tikk.com.tikk.common.FrequencyAnalizer;
-import com.tikk.com.tikk.common.CharItem;
-import com.tikk.com.tikk.common.MessageCoder;
+import com.tikk.common.CodeMapper;
+import com.tikk.common.CharItem;
+import com.tikk.common.FrequencyAnalizer;
+import com.tikk.common.MessageCoder;
 import org.junit.Before;
 import org.junit.Test;
 

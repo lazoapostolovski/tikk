@@ -1,7 +1,5 @@
 package com.tikk.common;
 
-import com.tikk.com.tikk.common.FrequencyAnalizer;
-import com.tikk.com.tikk.common.CharItem;
 import org.junit.Before;
 import org.junit.Test;
 

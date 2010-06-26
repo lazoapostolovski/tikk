@@ -1,4 +1,4 @@
-package com.tikk.com.tikk.common;
+package com.tikk.common;
 
 /**
  * Lazo Apostolovski (lazo.apostolovski@gmail.com)

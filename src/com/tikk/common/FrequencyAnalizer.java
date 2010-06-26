@@ -1,4 +1,4 @@
-package com.tikk.com.tikk.common;
+package com.tikk.common;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
