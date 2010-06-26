@@ -1,5 +1,7 @@
 package com.tikk.huffman;
 
+import com.tikk.com.tikk.common.CharItem;
+
 import java.util.*;
 
 /**
