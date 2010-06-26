@@ -9,21 +9,22 @@ import java.util.Map;
 /**
  * Lazo Apostolovski (lazo.apostolovski@gmail.com)
  */
-public class CharFrequencyGenerator {
+public class FrequencyAnalizer {
   public interface RealTextProvider {
     String getRealText();
   }
 
   private RealTextProvider textProvider;
 
-  public CharFrequencyGenerator() {
+  public FrequencyAnalizer() {
     this.textProvider = new DefaultTextProvider();
   }
 
-  public CharFrequencyGenerator(RealTextProvider textProvider) {
+  public FrequencyAnalizer(RealTextProvider textProvider) {
     this.textProvider = textProvider;
   }
-
+  // frsi cestoten analiz za vsqja bukva kolko pati se sre6ta
+  // zima bukva po bukva i gi broi. posle toa za sekoja bukva gi presmetuva procentite.
   public List<CharItem> generateList() {
     List<CharItem> chList = new ArrayList<CharItem>();
     Map<Character, Double> frequencyMap = new HashMap<Character, Double>();

@@ -1,11 +1,12 @@
 package com.tikk.shannonfano;
 
-import com.tikk.com.tikk.common.CharFrequencyGenerator;
+import com.tikk.com.tikk.common.CodeMapper;
+import com.tikk.com.tikk.common.FrequencyAnalizer;
 import com.tikk.com.tikk.common.CharItem;
 import com.tikk.com.tikk.common.MessageCoder;
+import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,52 +16,78 @@ import static org.junit.Assert.assertEquals;
  * Lazo Apostolovski (lazo.apostolovski@gmail.com)
  */
 public class ShannonFano {
-  private ShannonFanoCharCodeGenerator codesGenerator = new ShannonFanoCharCodeGenerator();
-  private CharFrequencyGenerator charFrequencyGenerator = new CharFrequencyGenerator();
-  private MessageCoder coder = new MessageCoder();
+  private FrequencyAnalizer analizer = new FrequencyAnalizer();
+
+  private ShannonFanoAlgorithm shannonFanoAlgorithm = new ShannonFanoAlgorithm();
+
+  private MessageCoder messageCoder = new MessageCoder();
+
+  private CodeMapper codeMapper;
+
+  @Before
+  public void before() {
+    codeMapper = new CodeMapper(shannonFanoAlgorithm);
+  }
 
   @Test
-  public void testCodeAndDecodeMessageWithShannonFanoAlgorithm(){
-    List<CharItem> charFrequencies = charFrequencyGenerator.generateList();
-    Map<Character, String> mappedCharacterCodes = codesGenerator.generate(charFrequencies);
+  public void testCodeAndDecodeMessageWithShannonFanoAlgorithm() {
+    List<CharItem> characterList = analizer.generateList();
+    Map<Character, String> mappedCodes = codeMapper.mapCodes(characterList);
 
-    String plainText = "Известните базови криптографски алгоритми се класифицират по " +
-        "различни класификационни признаци. Като класификационен признак на първото ниво на класификацията е " +
-        "използвано свойството симетричност на алгоритмите. ";
+    String message ="Български Манастир подробна информация за всички популярни български манастири. История, архитектура, снимки, настаняване, транспорт";
 
-    Double messageBits = new Double(plainText.getBytes().length * 8);
-    System.out.println("Codding message: ");
-    System.out.println(plainText);
-    System.out.println("Message size: " + messageBits.intValue() + " bits");
+    printMessage("Codding message: ", message);
 
-    String coddedMessage = coder.codeMessage(mappedCharacterCodes,plainText);
+    Double messageBits = new Double(message.getBytes().length * 8);
+
+    printLength("Message size: ", messageBits);
+
+    String coddedMessage = messageCoder.codeMessage(mappedCodes, message);
 
     Double coddedMessageBits = new Double(coddedMessage.length());
-    System.out.println("Codded message: " + coddedMessage);
-    System.out.println("Codded message size: " + coddedMessageBits.intValue());
+    printMessage("Codded message: ", coddedMessage);
 
-    System.out.println("Compresion: " +  + (coddedMessageBits / messageBits) * new Double(100) + " %");
-  }
+    String decodedMessage= messageCoder.decodeMessage(mappedCodes, coddedMessage);
 
-    @Test
-  public void testCodeMessage(){
-    List<CharItem> charFrequencies = charFrequencyGenerator.generateList();
+    printMessage("Decoded message", decodedMessage);
 
-    Map<Character, String> generatedCodes = codesGenerator.generate(charFrequencies);
-
-    String codedMessage = coder.codeMessage(generatedCodes, "работи");
-
-    assertEquals("1010000111100110000111010", codedMessage);
+    printCompressionLevel(coddedMessageBits, messageBits);
   }
 
   @Test
-  public void testDecodeMessage(){
-    List<CharItem> charFrequencies = charFrequencyGenerator.generateList();
+  public void testCodeMessage() {
+    List<CharItem> charFrequencies = analizer.generateList();
 
-    Map<Character, String> generatedCodes = codesGenerator.generate(charFrequencies);
+    Map<Character, String> generatedCodes = codeMapper.mapCodes(charFrequencies);
 
-    String decodedMessage = coder.decodeMessage(generatedCodes, "1010000111100110000111010");
+    String codedMessage = messageCoder.codeMessage(generatedCodes, "работи");
+
+    assertEquals("0001111001011111001001100111", codedMessage);
+  }
+
+  @Test
+  public void testDecodeMessage() {
+    List<CharItem> charFrequencies = analizer.generateList();
+
+    Map<Character, String> generatedCodes = codeMapper.mapCodes(charFrequencies);
+
+    String decodedMessage = messageCoder.decodeMessage(generatedCodes, "0001111001011111001001100111");
 
     assertEquals("работи", decodedMessage);
+  }
+
+    private void printMessage(String text, String message){
+    System.out.println(text);
+    System.out.println(message);
+    System.out.println("");
+  }
+
+  private void printLength(String text, Double bits){
+    System.out.println(text + bits.intValue() + " bits");
+    System.out.println("");
+  }
+
+  private void printCompressionLevel(Double coddedMessageBits, Double messageBits){
+    System.out.println("Compression: " + (100d - (coddedMessageBits / messageBits) * new Double(100)) + " %");
   }
 }

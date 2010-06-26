@@ -19,11 +19,11 @@ public class CharItem {
     return charCode;
   }
 
-  private Character ch;
-  private Double weight;
-  private String code = "";
-  private CharItem parentOne;
-  private CharItem patentTwo;
+  private Character ch; // bukva
+  private Double weight; /// 4estota vo procenti kolko pati se sre6ta
+  private String code = ""; // kod na bukvata
+  private CharItem parentOne; // roditel na bukvata
+  private CharItem patentTwo; // roditel na bukvata
 
   private CharItem(){
   }

@@ -8,6 +8,7 @@ import java.util.List;
  * Lazo Apostolovski (lazo.apostolovski@gmail.com)
  */
 public class SortCharItemImpl {
+  // izvr6va brzo sortirane na bukvite v zavisimost koq bukva se sre6ta pove4e
   public static List<CharItem> sortList(List<CharItem> list) {
     Collections.sort(list, new Comparator<CharItem>() {
       public int compare(CharItem first, CharItem second) {

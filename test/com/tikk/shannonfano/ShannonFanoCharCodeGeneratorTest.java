@@ -16,30 +16,11 @@ import static org.junit.Assert.assertNotNull;
  * Lazo Apostolovski (lazo.apostolovski@gmail.com)
  */
 public class ShannonFanoCharCodeGeneratorTest {
-  private ShannonFanoCharCodeGenerator generator;
+  private ShannonFanoAlgorithm generator;
 
   @Before
   public void before(){
-    generator = new ShannonFanoCharCodeGenerator();
-  }
-
-  @Test
-  public void testGenerateCharCode(){
-    List<CharItem> charFrequencies = getListWithCharItems();
-
-    Map<Character, String> codes = generator.generate(charFrequencies);
-
-    assertNotNull(codes);
-
-    assertEquals("00", codes.get('Е'));
-    assertEquals("010", codes.get('Н'));
-    assertEquals("011", codes.get(' '));
-    assertEquals("100", codes.get('Д'));
-    assertEquals("101", codes.get('Р'));
-    assertEquals("1100", codes.get('С'));
-    assertEquals("1101", codes.get('К'));
-    assertEquals("1110", codes.get('А'));
-    assertEquals("1111", codes.get('П'));
+    generator = new ShannonFanoAlgorithm();
   }
 
   @Test
@@ -47,7 +28,7 @@ public class ShannonFanoCharCodeGeneratorTest {
 
     List<CharItem> charFrequencies = getListWithCharItems();
     charFrequencies = SortCharItemImpl.sortList(charFrequencies);
-    charFrequencies = generator.generateList(charFrequencies, 100d);
+    charFrequencies = generator.generateCodes(charFrequencies, 100d);
 
     assertNotNull(charFrequencies);
 
